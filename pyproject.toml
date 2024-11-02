@@ -1,0 +1,36 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+name = "python-template"
+version = "0.1.0"
+description = "An Opinionated take on python projects. Hopefully to make life easier."
+authors = ["Vince Faller"]
+license = "Proprietary"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.32.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+ruff = "^0.4.4"
+coverage = "^7.5.1"
+invoke = "^2.2.0"
+beautifulsoup4 = "^4.12.3"
+pre-commit = "^3.7.1"
+ipykernel = "^6.29.4"
+
+
+[tool.coverage.run]
+branch = true
+omit = ["tests/conftest.py"]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "skipci(reason): marks tests to skip in ci (deselect with '-m \"not skipci\"')",
+]

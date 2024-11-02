@@ -1,0 +1,56 @@
+{
+    "id": 917689,
+    "name": "Require-Merge-Request",
+    "target": "branch",
+    "source_type": "Repository",
+    "source": "lite-dsa/python-template",
+    "enforcement": "active",
+    "conditions": {
+      "ref_name": {
+        "exclude": [],
+        "include": [
+          "~DEFAULT_BRANCH"
+        ]
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "committer_email_pattern",
+        "parameters": {
+          "operator": "ends_with",
+          "pattern": "lumentum.com",
+          "negate": false,
+          "name": ""
+        }
+      },
+      {
+        "type": "required_status_checks",
+        "parameters": {
+          "strict_required_status_checks_policy": false,
+          "required_status_checks": [
+            {
+              "context": "Run Tests",
+              "integration_id": 15368
+            }
+          ]
+        }
+      },
+      {
+        "type": "pull_request",
+        "parameters": {
+          "required_approving_review_count": 1,
+          "dismiss_stale_reviews_on_push": true,
+          "require_code_owner_review": false,
+          "require_last_push_approval": false,
+          "required_review_thread_resolution": true
+        }
+      }
+    ],
+    "bypass_actors": []
+  }
